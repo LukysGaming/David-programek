@@ -4,24 +4,26 @@ import time
 
 x = 0
 y = 0
+ranMov = 0
+
 
 def Move (movement, lenght):
 
 #direction
     if movement == "right":
         ranMov = 1
-        if movement == "down":
-            ranMov = 2
-            if movement == "left":
-                ranMov = 3
-                if movement == "up":
-                    ranMov = 4
+    if movement == "down":
+        ranMov = 2
+    if movement == "left":
+        ranMov = 3
+    if movement == "up":
+        ranMov = 4
 #lenght of the move
     if lenght > 0:
         lenght = lenght %500
-    else:
+    else:   
         lenght = 1 - 1
-
+    
     return ranMov, lenght
 
 #turtle setup
@@ -30,20 +32,20 @@ turtle.color("black")
 turtle.pendown
 turtle.shapesize(2)
 time.sleep(1)
-
 #Movement code
 while True :
     x = input("Direction ")
     y = int(input("Lenght "))
     Move(x, y)
+    x,y = Move(x,y)
 #Direction decision
     if x == 1:
-        turtle.right(0)
-        if x == 2:
-            turtle.down(270)
-            if x == 3:
-                turtle.left(180)
-                if x == 4:
-                    turtle.up(90)
+        turtle.setheading(0)
+    if x == 2:
+        turtle.setheading(270)
+    if x == 3:
+        turtle.setheading(180)
+    if x == 4:
+        turtle.setheading(90)
 #Movement specify
     turtle.forward(y)
